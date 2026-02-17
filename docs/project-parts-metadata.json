@@ -1,0 +1,58 @@
+{
+  "repository_type": "monolith",
+  "project_name": "Gas Town",
+  "project_slug": "gastown",
+  "generated": "2026-02-17T00:00:00Z",
+  "workflow_version": "1.2.0",
+  "parts": [
+    {
+      "part_id": "gastown-cli",
+      "display_name": "Gas Town CLI",
+      "project_type_id": "cli",
+      "root_path": "/Users/jonathangreen/Documents/gastown",
+      "primary_language": "Go",
+      "language_version": "1.24.2",
+      "key_frameworks": [
+        "Cobra",
+        "Bubbletea",
+        "Rod"
+      ],
+      "key_technologies": [
+        "Go",
+        "SQLite",
+        "Git Worktrees",
+        "tmux"
+      ],
+      "entry_points": [
+        "cmd/gt/main.go"
+      ],
+      "is_primary": true
+    },
+    {
+      "part_id": "npm-wrapper",
+      "display_name": "NPM Wrapper",
+      "project_type_id": "library",
+      "root_path": "/Users/jonathangreen/Documents/gastown/npm-package",
+      "primary_language": "JavaScript",
+      "language_version": "14+",
+      "key_frameworks": [],
+      "key_technologies": [
+        "Node.js",
+        "NPM"
+      ],
+      "entry_points": [
+        "bin/gt.js",
+        "scripts/postinstall.js"
+      ],
+      "is_primary": false
+    }
+  ],
+  "integration_points": [
+    {
+      "from": "npm-wrapper",
+      "to": "gastown-cli",
+      "type": "binary_wrapper",
+      "description": "NPM package installs and wraps the Go binary for cross-platform distribution"
+    }
+  ]
+}
